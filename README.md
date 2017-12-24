@@ -1,2 +1,2 @@
-# training-cryptcurrency-api
-training for some Cryptcurrency APIs
+# training-cryptocurrency-api
+training for some Cryptocurrency APIs
