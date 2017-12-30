@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/aDaisukeKondo/training-cryptcurrency-api#readme",
   "dependencies": {
-    "node-bitbankcc": "^1.0.1"
+    "await-sleep": "0.0.1",
+    "line-api": "^0.1.4",
+    "node-bitbankcc": "^1.0.1",
+    "zaif.jp": "^0.1.16"
   }
 }
