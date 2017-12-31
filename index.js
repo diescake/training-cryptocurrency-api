@@ -10,8 +10,8 @@ const zaif = new Zaif(config.zaif);
 // utilities
 const sleep = require('await-sleep');
 
-const LineNotify = require('./lib/LineNotify');
-const notify = new LineNotify(config.line);
+const LineNotifier = require('./lib/LineNotifier');
+const notify = new LineNotifier(config.line);
 
 // parameters
 const XRP_THREASHOLD = 220;
