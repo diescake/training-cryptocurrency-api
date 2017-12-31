@@ -19,6 +19,7 @@
   "dependencies": {
     "await-sleep": "0.0.1",
     "line-api": "^0.1.4",
+    "moment": "^2.20.1",
     "node-bitbankcc": "^1.0.1",
     "zaif.jp": "^0.1.16"
   }
