@@ -12,9 +12,9 @@ const notifier = new LineNotifier(config.line);
 const bitbank = new BitBank(config.bitbank);
 const zaif = new Zaif(config.zaif);
 
-const rules = {
+const rule = {
   interval: 5000,
-  scenario: [
+  scenarios: [
     {
       trader: bitbank,
       pair: 'xrp_jpy',
@@ -35,17 +35,17 @@ const rules = {
 };
 
 const main = async () => {
-  for (rule of rules.scenario) {
-    const trader = rule.trader;
-    const pair = rule.pair;
+  for (scenario of rule.scenarios) {
+    const trader = scenario.trader;
+    const pair = scenario.pair;
 
     const ticker = await trader.getTicker(pair);
-    console.log(`[${moment().format('HH:mm:ss')}][${rule.trader.getName()}] ${rule.pair}: ${ticker.last}`);
+    console.log(`[${moment().format('HH:mm:ss')}][${scenario.trader.getName()}] ${scenario.pair}: ${ticker.last}`);
 
-    if (ticker.last > rule.threashold.max) {
-      notifier.send(`last ${pair} is higher than ${rule.threashold.max}: ${ticker.last}`);
-    } else if (ticker.last < rule.threashold.min) {
-      notifier.send(`last ${pair} is lower than ${rule.threashold.min}: ${ticker.last}`);
+    if (ticker.last > scenario.threashold.max) {
+      notifier.alertPrice(pair, scenario.threashold.max, ticker.last, true);
+    } else if (ticker.last < scenario.threashold.min) {
+      notifier.alertPrice(pair, scenario.threashold.min, ticker.last, false);
     }
   }
 }
@@ -54,6 +54,6 @@ const main = async () => {
 (async () => {
   while (true) {
     main();
-    await sleep(rules.interval);
+    await sleep(rule.interval);
   }
 })();
