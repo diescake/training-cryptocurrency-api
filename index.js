@@ -16,14 +16,16 @@ const rule = {
   interval: 5000,
   scenarios: [
     {
+      enabled: false,
       trader: bitbank,
       pair: 'xrp_jpy',
       threashold: {
-        max: 300,
-        min: 220
+        max: 250,
+        min: 200
       }
     },
     {
+      enabled: true,
       trader: zaif,
       pair: 'btc_jpy',
       threashold: {
@@ -36,6 +38,9 @@ const rule = {
 
 const main = async () => {
   for (scenario of rule.scenarios) {
+    if (!scenario.enabled) {
+      continue;
+    }
     const trader = scenario.trader;
     const pair = scenario.pair;
 
