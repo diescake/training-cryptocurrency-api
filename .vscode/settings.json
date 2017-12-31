@@ -1,6 +1,6 @@
 // 既定の設定とユーザー設定を上書きするには、このファイル内に設定を挿入します
 {
-  "editor.fontSize": 16,
+  // "editor.fontSize": 16,
   // Default tab size of 2.
   "editor.tabSize": 2,
   // Do not figure out tab size from opening a file.
@@ -23,46 +23,6 @@
   // Optional: Same for files opened from quick open (Ctrl+P).
   "workbench.editor.enablePreviewFromQuickOpen": false,
 
-"files.associations": {
-    "*.grd": "xml",
-    "*.gni": "javascript",
-    "*.gn": "javascript",
-    "*.sigs": "cpp",
-    "*.fragment": "cpp",
-    "*.rc": "shellscript",
-    "sphinx.c": "cpp",
-    "includeconvert.c": "cpp",
-    "backtrace-symbols.c": "cpp",
-    "lookup-symbol.c": "cpp",
-    "des.c": "cpp",
-    "evhiperfifo.c": "cpp",
-    "ghiper.c": "cpp",
-    "hiperfifo.c": "cpp",
-    "ftplistparser.c": "cpp",
-    "tftp.c": "cpp",
-    "errmsg.c": "cpp",
-    "pngvalid.c": "cpp",
-    "buf.c": "cpp",
-    "c14n.c": "cpp",
-    "pattern.c": "cpp",
-    "libxml.c": "cpp",
-    "relaxng.c": "cpp",
-    "schematron.c": "cpp",
-    "trio.c": "cpp",
-    "xmlregexp.c": "cpp",
-    "xmlschemas.c": "cpp",
-    "functions.c": "cpp",
-    "iowin32.c": "cpp",
-    "untgz.c": "cpp",
-    "gzlib.c": "cpp",
-    "minigzip.c": "cpp",
-    "framing.c": "cpp",
-    "encodemb.c": "cpp",
-    "pack_unpack.c": "cpp",
-    "rngparser.c": "cpp",
-    "testoom.c": "cpp"
-},
-
   "files.exclude": {
     // Ignore build output folders.
     "out*/**": true
@@ -70,22 +30,10 @@
 
   "window.title": "${rootName}${separator}${activeEditorShort}",
 
-  // Wider author column for annotator extension.
-  // "annotator.annotationColumnWidth": "24em",
-
-  // C++ clang format settings.
-  "C_Cpp.clang_format_path": "/home/access/workspace/chromium/depot_tools/clang-format",
-  "C_Cpp.clang_format_sortIncludes": true,
-  "C_Cpp.clang_format_formatOnSave": false,
   "editor.fontFamily": "'Ricty', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
   "workbench.editor.tabCloseButton": "off",
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
-
-  // YouCompleteMe
-  // "ycmd.path": "/home/access/.ycmd",
-  // "ycmd.global_extra_config": "/home/access/.ycmd/cpp/ycm/.ycm_extra_conf.py",
-  // "ycmd.confirm_extra_conf": false,
 
   // vim extension
   "vim.hlsearch": true,
