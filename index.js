@@ -8,8 +8,8 @@ const notifier = new LineNotifier(
   require('./config/secure').line
 );
 
-const main = async () => {
-  for (scenario of rule.scenarios) {
+const main = async() => {
+  for (const scenario of rule.scenarios) {
     if (!scenario.enabled) {
       continue;
     }
@@ -25,10 +25,10 @@ const main = async () => {
       notifier.alertPrice(pair, scenario.threashold.min, ticker.last, false);
     }
   }
-}
+};
 
 // main loop;
-(async () => {
+(async() => {
   while (true) {
     await main().catch((aError) => {
       console.warn(aError);
