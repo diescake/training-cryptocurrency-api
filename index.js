@@ -58,7 +58,9 @@ const main = async () => {
 // main loop;
 (async () => {
   while (true) {
-    main();
+    await main().catch((aError) => {
+      console.warn(aError);
+    });
     await sleep(rule.interval);
   }
 })();
