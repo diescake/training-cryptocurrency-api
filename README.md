@@ -12,22 +12,22 @@ This code is tested with node.js 8.6.0
 
 ## Preparation
 
-Input your api-keys and secrets to config.js
+Input your api-keys and secrets to `config/secure.js`
 
 ```js
-{
-  bitbank: {
-    apiKey: 'your-api-key',
-    secret: 'your-secret'
-  },
-  zaif: {
-    apikey: 'your-api-key',
-    secret: 'your-secret'
-  },
-  line: {
-    token: 'your-token'
-  }
-}
+module.exports.bitbank = {
+  apiKey: 'your-api-key',
+  secret: 'your-secret'
+};
+
+module.exports.zaif = {
+  apiKey: 'your-api-key',
+  secret: 'your-secret'
+};
+
+module.exports.line = {
+  token: 'your-line-token'
+};
 ```
 
 ## Run
