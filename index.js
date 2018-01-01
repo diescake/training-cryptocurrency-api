@@ -16,18 +16,24 @@ const main = async() => {
     const trader = scenario.trader;
     const pair = scenario.pair;
 
+    let prevTicker = trader.prevTicker;
     const ticker = await trader.getTicker(pair);
+
+    if (!prevTicker) {
+      prevTicker = ticker;
+    }
+
     console.log(`[${moment().format('HH:mm:ss')}][${scenario.trader.getName()}] ${scenario.pair}: ${ticker.last}`);
 
-    if (ticker.last > scenario.threashold.max) {
+    if (ticker.last > scenario.threashold.max && !(prevTicker.last > scenario.threashold.max)) {
       notifier.alertPrice(pair, scenario.threashold.max, ticker.last, true);
-    } else if (ticker.last < scenario.threashold.min) {
+    } else if (ticker.last < scenario.threashold.min && !(prevTicker.last < scenario.threashold.min)) {
       notifier.alertPrice(pair, scenario.threashold.min, ticker.last, false);
     }
   }
 };
 
-// main loop;
+// main loop
 (async() => {
   while (true) {
     await main().catch((aError) => {
