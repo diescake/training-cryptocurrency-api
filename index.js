@@ -8,6 +8,10 @@ const notifier = new LineNotifier(
   require('./config/secure').line
 );
 
+const printPrice = (aTraderName, aPair, aLast) => {
+  console.log(`[${moment().format('HH:mm:ss')}][${aTraderName.padEnd(7)}] ${aPair}: ${aLast}`);
+};
+
 const main = async() => {
   for (const scenario of rule.scenarios) {
     if (!scenario.enabled) {
@@ -23,7 +27,7 @@ const main = async() => {
       prevTicker = ticker;
     }
 
-    console.log(`[${moment().format('HH:mm:ss')}][${scenario.trader.getName()}] ${scenario.pair}: ${ticker.last}`);
+    printPrice(scenario.trader.getName(), scenario.pair, ticker.last);
 
     if (ticker.last > scenario.threashold.max && !(prevTicker.last > scenario.threashold.max)) {
       notifier.alertPrice(pair, scenario.threashold.max, ticker.last, true);
