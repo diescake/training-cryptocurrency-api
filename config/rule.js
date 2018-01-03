@@ -1,32 +1,37 @@
 const BitBank = require('../lib/BitBank');
 const Zaif = require('../lib/Zaif');
 
-const bitbank = new BitBank(
-  require('../config/secure').bitbank
-);
-const zaif = new Zaif(
-  require('../config/secure').zaif
-);
+const bbSecure = require('../config/secure').bitbank;
+const zfSecure = require('../config/secure').zaif;
 
 const rule = {
   interval: 3000,
   scenarios: [
     {
       enabled: true,
-      trader: bitbank,
+      trader: new BitBank(bbSecure),
       pair: 'xrp_jpy',
       threashold: {
-        max: 250,
-        min: 200
+        max: 300,
+        min: 250
       }
     },
     {
       enabled: true,
-      trader: zaif,
+      trader: new Zaif(zfSecure),
       pair: 'btc_jpy',
       threashold: {
         max: 1780000,
-        min: 1000000
+        min: 1500000
+      }
+    },
+    {
+      enabled: true,
+      trader: new Zaif(zfSecure),
+      pair: 'xem_jpy',
+      threashold: {
+        max: 150,
+        min: 110
       }
     }
   ]
