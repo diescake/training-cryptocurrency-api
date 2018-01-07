@@ -10,28 +10,37 @@ const rule = {
     {
       enabled: true,
       trader: new BitBank(bbSecure),
-      pair: 'xrp_jpy',
-      threashold: {
-        max: 300,
-        min: 250
+      action: {
+        type: 'alert',
+        pair: 'xrp_jpy',
+        threashold: {
+          max: 400,
+          min: 340
+        }
       }
     },
     {
       enabled: true,
       trader: new Zaif(zfSecure),
-      pair: 'btc_jpy',
-      threashold: {
-        max: 1780000,
-        min: 1500000
+      action: {
+        type: 'alert',
+        pair: 'btc_jpy',
+        threashold: {
+          max: 2000000,
+          min: 1700000
+        }
       }
     },
     {
       enabled: true,
       trader: new Zaif(zfSecure),
-      pair: 'xem_jpy',
-      threashold: {
-        max: 150,
-        min: 110
+      action: {
+        type: 'alert',
+        pair: 'xem_jpy',
+        threashold: {
+          max: 350,
+          min: 200
+        }
       }
     }
   ]
