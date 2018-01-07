@@ -11,6 +11,16 @@ const rule = {
       enabled: true,
       trader: new BitBank(bbSecure),
       action: {
+        type: 'trade',
+        pair: 'xrp_jpy',
+        buy: 330,
+        sell: 500
+      }
+    },
+    {
+      enabled: false,
+      trader: new BitBank(bbSecure),
+      action: {
         type: 'alert',
         pair: 'xrp_jpy',
         threashold: {
@@ -20,7 +30,7 @@ const rule = {
       }
     },
     {
-      enabled: true,
+      enabled: false,
       trader: new Zaif(zfSecure),
       action: {
         type: 'alert',
@@ -32,7 +42,7 @@ const rule = {
       }
     },
     {
-      enabled: true,
+      enabled: false,
       trader: new Zaif(zfSecure),
       action: {
         type: 'alert',

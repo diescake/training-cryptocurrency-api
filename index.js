@@ -31,6 +31,28 @@ const actionAlert = async(aTrader, aAction) => {
   }
 };
 
+const actionTrade = async(aTrader, aAction) => {
+  const pair = aAction.pair;
+  const ticker = await aTrader.getTicker(pair);
+
+  const result = await (async() => {
+    if (ticker.last >= aAction.sell) {
+      return await aTrader.order(pair, aAction.sell, 1.0, 'sell', 'limit');
+    } else if (ticker.last <= aAction.buy) {
+      return await aTrader.order(pair, aAction.buy, 1.0, 'buy', 'limit');
+    } else {
+      return false;
+    }
+  })();
+
+  if (result) {
+    console.log(`trade done: [${result.side}]`);
+    console.log(`pair: ${result.pair}`);
+    console.log(`amount: ${result.start_amount}`);
+    console.log(`price: ${result.price}`);
+  }
+};
+
 const main = async() => {
   for (const scenario of rule.scenarios) {
     if (!scenario.enabled) {
@@ -42,7 +64,7 @@ const main = async() => {
         actionAlert(scenario.trader, scenario.action);
         break;
       case 'trade':
-        // not implement
+        actionTrade(scenario.trader, scenario.action);
         break;
       default:
         console.error(`invalid action type: ${scenario.action.type}`);
